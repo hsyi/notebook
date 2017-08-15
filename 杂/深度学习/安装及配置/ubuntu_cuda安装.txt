@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-15T10:11:35+08:00
+
+====== ubuntu cuda安装 ======
+创建日期 星期二 15 八月 2017
+
