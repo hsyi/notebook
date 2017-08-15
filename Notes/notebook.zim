@@ -1,0 +1,12 @@
+[Notebook]
+version=0.4
+name=杂
+interwiki=
+home=Home
+icon=
+document_root=~/Notebooks
+shared=True
+endofline=unix
+disable_trash=False
+profile=
+

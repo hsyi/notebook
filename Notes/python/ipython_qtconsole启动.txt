@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-15T09:57:59+08:00
+
+====== ipython qtconsole启动 ======
+创建日期 星期二 15 八月 2017
+
+ipython qtconsole启动：
+jupyter qtconsole
