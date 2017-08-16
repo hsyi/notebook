@@ -5,72 +5,22 @@ Creation-Date: 2017-08-15T10:35:21+08:00
 ====== nvdia显卡驱动安装 ======
 创建日期 星期二 15 八月 2017
 
-获取驱动
-   安装驱动的途径有很多，如run文件、deb文件、PPA源、apt-get都可以，这里选择去官网 http://www.nvidia.com/Download/index.aspx?lang=en-us 下载编译驱动。
+添加ppa源：
 
-   
-   Product Type : GeForce
-   Product Series : GeForce 700 Series
-   Product : GeForce GTX 750ti
-   Operating System: Linux 64-bit
-   Language: English(US)
+	sudo add-apt-repository ppa:graphics-drivers/ppa
 
+更新系统库：
+	sudo apt-get update
 
+官网找到最新支持的驱动版本号：375
 
-卸载已存在驱动版本
-		  sudo apt-get remove --purge nvidia*
+一定要装375 384似乎是和cuda不兼容装完以后装cuda很麻烦
 
+sudo apt-get update
+sudo apt-get install nvidia-375
+sudo apt-get install mesa-common-dev
+sudo apt-get install freeglut3-dev
 
-编译依赖   
-   执行uname -r，比如我的结果是4.10.0-28-generic
-   执行
-		   sudo apt-get install build-essential pkg-config xserver-xorg-dev linux-headers-4.10.0-28-generic
+然后重启电脑让显卡驱动生效
 
-
-屏蔽开源驱动nouveau
-   安装过程会询问是否屏蔽，手动屏蔽也有多种操作方式，如通过blacklist.conf或Grub2。这里选择blacklist：
-   创建新文件：
-		   sudo vim /etc/modprobe.d/blacklist-nouveau.conf
-   内容为
-		   blacklist nouveau
-		   options nouveau modeset=0
-   再更新
-		   sudo update-initramfs -u
-
-
-
-结束X-window服务
-  安装Nvidia驱动需要结束x-window服务，据说这一步很重要。
-   KUbuntu : sudo /etc/init.d kdm stop
-   Ubuntu : sudo /etc/init.d gdm stop
-   Ubuntu(>11.10) : sudo /etc/init.d lightdm stop  或sudo service lightdm stop
-   我这里是lightdm，不确定是哪个可以都试试，或是直接 init 3
-
-
-   按Ctrl + Alt + F1 进入tty1控制台
-
-安装驱动
-   执行驱动安装的run文件
-		sudo sh ./NVIDIA-Linux-x86_64-367.57.run  或sudo sh ./NVIDIA*.run
-  （如果安装不正常则带 --uninstall 参数卸载）
-
-
-安装完后重启X-window
-   KUbuntu : sudo /etc/init.d kdm restart
-   Ubuntu : sudo /etc/init.d gdm restart
-   Ubuntu(>11.10) : sudo start lightdm 或 sudo service lightdm start
-   按Ctrl + Alt + F7返回tty7图形界面   
-
-检查
-   nvidia-smi   可显示显卡一些信息
-   nvidia-settings  显卡设置
-   另外还有命令：
-   lspci 显示系统中所有PCI总线设备或连接到该总线上的所有设备的工具   
-   lsmod 已载入系统的模块
-   
-   lspci | grep VGA 或 lspci | grep NVIDIA
-   lsmod | grep nvidia
-
-
-   如果详细信息里显卡选项未知，可
-   sudo apt-get install mesa-utils
+nvidia-smi 可以看见gpu信息

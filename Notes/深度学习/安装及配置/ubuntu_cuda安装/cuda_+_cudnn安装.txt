@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-15T16:50:16+08:00
+
+====== cuda + cudnn安装 ======
+Created 星期二 15 八月 2017
+
+.deb安装 
+
+`sudo dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb`
+`sudo apt-get update`
+`sudo apt-get install cuda`
+
+或 runfile安装
+下载后按照提示操作即可
+
+安装完成后添加环境变量 
+在~/.bashrc中添加：
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-16T10:31:23+08:00
+
+====== caffe安装 ======
+Created 星期三 16 八月 2017
+
+安装cuda
+
+安装mkl矩阵运算库
