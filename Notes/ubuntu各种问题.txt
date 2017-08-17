@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-16T20:28:02+08:00
+
+====== ubuntu各种问题 ======
+Created 星期三 16 八月 2017
+
+
+ /home/hesy/anaconda2/bin/../lib/libstdc++.so.6: version `GLIBCXX_3.4.20' not found
+
+find \ -name libstdc++*
+strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21 | grep GLIBC
+hesy@hesy-All-Series:~/anaconda2/lib$ cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21 .
+hesy@hesy-All-Series:~/anaconda2/lib$ rm -rf libstdc++.so.6
+hesy@hesy-All-Series:~/anaconda2/lib$ ln -s libstdc++.so.6.0.21 libstdc++.so.6
+

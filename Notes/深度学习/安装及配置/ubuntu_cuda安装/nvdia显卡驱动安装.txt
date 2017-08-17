@@ -5,6 +5,8 @@ Creation-Date: 2017-08-15T10:35:21+08:00
 ====== nvdia显卡驱动安装 ======
 创建日期 星期二 15 八月 2017
 
+ppa安装 
+
 添加ppa源：
 
 	sudo add-apt-repository ppa:graphics-drivers/ppa

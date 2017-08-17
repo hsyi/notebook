@@ -17,3 +17,17 @@ Created 星期二 15 八月 2017
 安装完成后添加环境变量 
 在~/.bashrc中添加：
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+export CUDA_HOME="/usr/local/cuda"
+
+cudnn安装：
+解压 cuDNN 压缩包
+$ tar -xzvf cudnn-8.0-linux-x64-v7.tgz
+拷贝文件到cuda文件夹
+$ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+$ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+$ sudo chmod a+r /usr/local/cuda/include/cudnn.h
+[[/usr/local/cuda/lib64/libcudnn*]]
+
+
+
+

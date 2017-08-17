@@ -7,4 +7,40 @@ Created 星期三 16 八月 2017
 
 安装cuda
 
-安装mkl矩阵运算库
+安装OpenBLAS
+sudo apt-get install libopenblas-dev
+
+通用依赖项安装：
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+
+sudo apt-get install --no-install-recommends libboost-all-dev
+
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
+
+编译安装
+cp Makefile.config.example Makefile.config
+调整Makefile.config 修改过后的Makefile.config见附件
+make all
+
+出现问题：
+src/caffe/layers/hdf5_data_layer.cpp:13:18: fatal error: hdf5.h: 没有那个文件或目录
+解决：
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
+LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib [[/usr/lib/x86_64-linux-gnu/hdf5/serial/]]
+
+make test
+make runtest
+
+ export PYTHONPATH=~/caffe/python:$PYTHONPATH
+
+问题：
+ /home/hesy/anaconda2/bin/../lib/libgomp.so.1: version `GOMP_4.0' not found (required by /usr/lib/x86_64-linux-gnu/libsoxr.so.0)
+解决：
+hesy@hesy-All-Series:~/anaconda2/lib$ sudo find / -name "libgomp.so.1*"
+hesy@hesy-All-Series:~/anaconda2/lib$ cp /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 /home/hesy/anaconda2/pkgs/libgcc-4.8.5-2/lib/
+hesy@hesy-All-Series:~/anaconda2/lib$ cd ../pkgs/libgcc-4.8.5-2/lib
+hesy@hesy-All-Series:~/anaconda2/pkgs/libgcc-4.8.5-2/lib$ rm -rf libgomp.so.1.0.0
+hesy@hesy-All-Series:~/anaconda2/pkgs/libgcc-4.8.5-2/lib$ cp /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 /home/hesy/anaconda2/pkgs/libgcc-4.8.5-2/lib/
+hesy@hesy-All-Series:~/anaconda2/pkgs/libgcc-4.8.5-2/lib$ rm -rf libgomp.so.1
+hesy@hesy-All-Series:~/anaconda2/pkgs/libgcc-4.8.5-2/lib$ ln libgomp.so.1.0.0 libgomp.so.1
+
